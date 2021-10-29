@@ -319,7 +319,7 @@
           <div class="row">
             <div class="right-content">
               <div class="container">
-                <form id="contact" action="mail.php" method="post">
+                <form id="contact" action="" method="post">
                   <div class="row">
                     <div class="col-md-6">
                       <fieldset>
@@ -371,7 +371,7 @@
                     </div>
                     <div class="col-md-12">
                       <fieldset>
-                        <button type="submit" id="form-submit" class="button">
+                        <button type="submit" id="form-submit" class="button" onClick="alertFunction()">
                           Send Message
                         </button>
                       </fieldset>
@@ -443,6 +443,10 @@
       $(window).scroll(function() {
         checkSection();
       });
+      
+      function alertFunction() {
+        alert("Email Has Been Send!");
+      }
     </script>
   </body>
 </html>
