@@ -1,16 +1,20 @@
 <?php
-//get data from form  
-$name = $_POST['name'];
-$email= $_POST['email'];
-$message= $_POST['message'];
-$to = "riofebrianto826@gmail.com";
-$subject = $_POST['subject'];
-$txt ="Name = ". $name . "\r\n  Email = " . $email . "\r\n Message =" . $message;
-$headers = "From: noreply@mysite.com" . "\r\n" .
-"CC: somebodyelse@example.com";
-if($email!=NULL){
-    mail($to,$subject,$txt,$headers);
+if($_POST['mail']){
+	$admin = 'riofebrianto826@gmail.com'; //ganti email dg email admin (email penerima pesan)
+	
+	$nama	= htmlentities($_POST['name']);
+	$email	= htmlentities($_POST['email']);
+	$judul	= htmlentities($_POST['subject']);
+	$pesan	= htmlentities($_POST['message']);
+	
+	$pengirim	= 'Dari: '.$nama.' <'.$email.'>';
+	
+	if(mail($admin, $judul, $pesan, $pengirim)){
+		echo 'SUCCESS: Pesan anda berhasil di kirim. <a href="index.php">Kembali</a>';
+	}else{
+		echo 'ERROR: Pesan anda gagal di kirim silahkan coba lagi. <a href="index.php">Kembali</a>';
+	}
+}else{
+	header("Location: index.php");
 }
-//redirect
-header("Location:index.html");
 ?>
